@@ -281,6 +281,7 @@ body.photo{padding:0}
     <label><input type="checkbox" id="t-claustra"> Afficher le claustra</label>
     <label><input type="checkbox" id="t-claustra2"> Claustra derrière le canapé</label>
     <label><input type="checkbox" id="t-island" disabled> Îlot central — pas de place (cuisine 3,50 × 3,12 m)</label>
+    <label><input type="checkbox" id="t-norang"> Sans rangement ni radiateur (mur d'escalier jusqu'au mur fenêtre)</label>
     <label class="panel-only"><input type="checkbox" id="t-stair"> Escalier ouvert : murs latéraux à 1,10 m</label>
     <div id="verr-box" hidden><div class="sub" style="margin-top:2px">Style des verrières</div><div class="seg" style="grid-template-columns:repeat(4,1fr)" role="group" aria-label="Style des verrières"><button type="button" data-verr="atelier" aria-pressed="true">Atelier</button><button type="button" data-verr="arche" aria-pressed="false">Arches</button><button type="button" data-verr="lattes" aria-pressed="false">Lattes</button><button type="button" data-verr="cannele" aria-pressed="false">Cannelé</button></div></div>
   </div>
@@ -297,7 +298,7 @@ body.photo{padding:0}
       <dt>Fermée</dt><dd>Variante : cloisons conservées, porte de cuisine 83 cm côté WC, sans meuble d'angle (porte du sous-sol apparente). Meubles bas, plan et meubles hauts en L sur la cloison côté salon (2,41 m + retour 38 cm), hors débattement des deux portes</dd>
       <dt>Claustra</dt><dd>Option : claustra chêne toute hauteur entre canapé et table, du dossier jusqu'à 30 cm devant le canapé (1,25 m), à 10 cm du tapis. Activé, la table se décale de 60 cm vers la cuisine. Option : second claustra derrière le canapé, du mur côté fenêtre jusqu'à l'angle (3,10 m), au ras du tapis</dd>
       <dt>Cuisine</dt><dd>Pièce de 3,50 m (cloison salon → mur droit) × 3,12 m (mur fenêtre → mur WC). L de cuisine : 2,83 m sur le mur droit (de la gaine au mur du WC), retour de 2,02 m le long du WC. Petite table 80 × 65 cm et 2 chaises. L'îlot n'est plus proposé : il manque environ 1 m pour garder 70 cm de passage</dd>
-      <dt>Escalier</dt><dd>Descente au sous-sol derrière la porte : 10 marches de 21 cm (2,10 m), girons 22 cm, largeur 80 cm, main courante à 90 cm, palier bas face à la porte d'accès. Côté cuisine : 1,32 m de mur de la porte au rangement, puis rangement 90 × 90 cm en déport vers la cuisson (porte de 70 côté cuisson, radiateur en façade). Option cuisine ouverte : murs latéraux ouverts de 1,10 m au plafond avec chaperon chêne, surmontés de verrières à armature bois (côté salon 30 cm de haut, côté cuisine jusqu'au plafond), 4 styles au choix : atelier à petits carreaux, arches cintrées, lattes ajourées, verre cannelé et noyer ; meuble TV ramené à un meuble bas avec TV sur pied ; la colonne d'angle à panneau coulissant est remplacée par un meuble bas de 1,10 m qui s'arrête au bord du mur ouvert, et la porte du sous-sol par une barrière de sécurité enfant de 76 cm (barreaux espacés de moins de 6,5 cm)</dd>
+      <dt>Escalier</dt><dd>Descente au sous-sol derrière la porte : 10 marches de 21 cm (2,10 m), girons 22 cm, largeur 80 cm, main courante à 90 cm, palier bas face à la porte d'accès. Côté cuisine : 1,32 m de mur de la porte au rangement, puis rangement 90 × 90 cm en déport vers la cuisson (porte de 70 côté cuisson, radiateur en façade). Option « sans rangement » : rangement et radiateur retirés, le mur de cage côté cuisine (et sa verrière si l'escalier est ouvert) va jusqu'au mur de la fenêtre. Option cuisine ouverte : murs latéraux ouverts de 1,10 m au plafond avec chaperon chêne, surmontés de verrières à armature bois (côté salon 30 cm de haut, côté cuisine jusqu'au plafond), 4 styles au choix : atelier à petits carreaux, arches cintrées, lattes ajourées, verre cannelé et noyer ; meuble TV ramené à un meuble bas avec TV sur pied ; la colonne d'angle à panneau coulissant est remplacée par un meuble bas de 1,10 m qui s'arrête au bord du mur ouvert, et la porte du sous-sol par une barrière de sécurité enfant de 76 cm (barreaux espacés de moins de 6,5 cm)</dd>
       <dt>Repas</dt><dd>Table 2,70 × 1,00 m pour 10 personnes, perpendiculaire au canapé, chaises et couverts dressés</dd>
     </dl>
   </details>
@@ -633,11 +634,15 @@ L(scene,1.81,2.91,0.88,0.92,-0.2,0.04,M.frame);
 L(scene,1.81,2.91,2.1,2.15,-0.14,-0.06,M.frame);L(scene,1.865,2.855,0.92,2.1,-0.105,-0.095,M.glass,true);
 L(scene,XR,XR+0.2,0,H,-0.2,4.73,WK);           // mur droit
 L(scene,3.19,XR,0,H,0,0.29,WK);             // gaine 31 × 29
-L(scene,-0.2,SW0,0,H,0,SZ0,WKS);L(scene,SW1,0.9,0,H,0,SZ0,WK);   // haut de la cage : vide au-dessus de l'escalier, entre le mur du salon et le rangement
-// rangement 90 × 90 dans la continuité du mur d'escalier, en déport côté cuisine (porte de 70 côté cuisson), radiateur en façade
-L(scene,0.9,1.8,0,H,0,SZ0,WK);L(scene,1.8,1.82,0,2.04,0.1,0.8,M.door);L(scene,1.8,1.83,0,2.06,0.08,0.1,M.frame);L(scene,1.8,1.83,0,2.06,0.8,0.82,M.frame);L(scene,1.8,1.83,2.04,2.06,0.08,0.82,M.frame);
-cyl(scene,0.01,0.12,1.84,1.0,0.72,M.steel,Math.PI/2);
-(function(){const w=std('#f2f1ee',0.4);L(scene,1.0,1.7,0.15,0.75,SZ0+0.03,SZ0+0.1,w);for(let x=1.02;x<1.69;x+=0.05)L(scene,x,x+0.03,0.16,0.74,SZ0+0.1,SZ0+0.11,w);})();
+L(scene,-0.2,SW0,0,H,0,SZ0,WKS);   // haut de la cage côté salon : vide au-dessus de l'escalier
+// mur de cage côté cuisine entre le mur fenêtre et le rangement : plein, ou à 1,10 m (sans rangement + escalier ouvert)
+const kUpFull=new THREE.Group(),kUpLow=new THREE.Group();scene.add(kUpFull);scene.add(kUpLow);kUpLow.visible=false;
+L(kUpFull,SW1,0.9,0,H,0,SZ0,WK);L(kUpLow,SW1,0.9,0,SOPEN,0,SZ0,WK);L(kUpLow,SW1-0.015,0.915,SOPEN,SOPEN+0.04,0,SZ0,M.oak);
+// rangement 90 × 90 dans la continuité du mur d'escalier, en déport côté cuisine (porte de 70 côté cuisson), radiateur en façade — option : supprimé
+const rangG=new THREE.Group();scene.add(rangG);let noRang=false;
+L(rangG,0.9,1.8,0,H,0,SZ0,WK);L(rangG,1.8,1.82,0,2.04,0.1,0.8,M.door);L(rangG,1.8,1.83,0,2.06,0.08,0.1,M.frame);L(rangG,1.8,1.83,0,2.06,0.8,0.82,M.frame);L(rangG,1.8,1.83,2.04,2.06,0.08,0.82,M.frame);
+cyl(rangG,0.01,0.12,1.84,1.0,0.72,M.steel,Math.PI/2);
+(function(){const w=std('#f2f1ee',0.4);L(rangG,1.0,1.7,0.15,0.75,SZ0+0.03,SZ0+0.1,w);for(let x=1.02;x<1.69;x+=0.05)L(rangG,x,x+0.03,0.16,0.74,SZ0+0.1,SZ0+0.11,w);})();
 // cage d'escalier : murs latéraux pleins, ou ouverts de 1,10 m au plafond (option, cuisine ouverte) avec chaperon chêne
 const stairFull=new THREE.Group(),stairLow=new THREE.Group();scene.add(stairFull);scene.add(stairLow);stairLow.visible=false;
 L(stairFull,-0.2,SW0,0,H,SZ0,SZ1,WKS);L(stairFull,SW1,0.9,0,H,SZ0,SZ1,WK);
@@ -649,36 +654,38 @@ const reedTex=(()=>{const c=document.createElement('canvas');c.width=32;c.height
   gr.addColorStop(0,'#8fa3aa');gr.addColorStop(.5,'#f6fbfc');gr.addColorStop(1,'#8fa3aa');g.fillStyle=gr;g.fillRect(0,0,32,4);
   const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.encoding=THREE.sRGBEncoding;t.repeat.set(72,1);return t;})();
 const M_reed=new THREE.MeshPhysicalMaterial({color:'#e9f2f4',map:reedTex,roughness:0.3,transparent:true,opacity:0.62,envMapIntensity:1});
-const VSTY={atelier:new THREE.Group(),arche:new THREE.Group(),lattes:new THREE.Group(),cannele:new THREE.Group()};
-Object.values(VSTY).forEach(g=>stairLow.add(g));
-const VS={S:{xc:(-0.2+SW0)/2,y0:SOPEN+0.04,y1:SOPEN+0.34},K:{xc:(SW1+0.9)/2,y0:SOPEN+0.04,y1:H}};
-function vFrame(g,s,mat,b,t){L(g,s.xc-t,s.xc+t,s.y0,s.y0+b,SZ0,SZ1,mat);L(g,s.xc-t,s.xc+t,s.y1-b,s.y1,SZ0,SZ1,mat);
-  L(g,s.xc-t,s.xc+t,s.y0+b,s.y1-b,SZ0,SZ0+b,mat);L(g,s.xc-t,s.xc+t,s.y0+b,s.y1-b,SZ1-b,SZ1,mat);}
-function vGlass(g,s,ya,yb,mat){L(g,s.xc-0.004,s.xc+0.004,ya,yb,SZ0+0.02,SZ1-0.02,mat||M.glass,true);}
+// trois jeux de verrières : côté salon, côté cuisine (1,32 m) et côté cuisine prolongé jusqu'au mur fenêtre (sans rangement)
+const STY=['atelier','arche','lattes','cannele'];
+function vSet(){const p=new THREE.Group();stairLow.add(p);const o={p};STY.forEach(k=>{o[k]=new THREE.Group();p.add(o[k]);});return o;}
+const vSal=vSet(),vKs=vSet(),vKl=vSet();vKl.p.visible=false;
+const VS={S:{xc:(-0.2+SW0)/2,y0:SOPEN+0.04,y1:SOPEN+0.34,z0:SZ0,z1:SZ1},K:{xc:(SW1+0.9)/2,y0:SOPEN+0.04,y1:H,z0:SZ0,z1:SZ1},KL:{xc:(SW1+0.9)/2,y0:SOPEN+0.04,y1:H,z0:0,z1:SZ1}};
+function vFrame(g,s,mat,b,t){L(g,s.xc-t,s.xc+t,s.y0,s.y0+b,s.z0,s.z1,mat);L(g,s.xc-t,s.xc+t,s.y1-b,s.y1,s.z0,s.z1,mat);
+  L(g,s.xc-t,s.xc+t,s.y0+b,s.y1-b,s.z0,s.z0+b,mat);L(g,s.xc-t,s.xc+t,s.y0+b,s.y1-b,s.z1-b,s.z1,mat);}
+function vGlass(g,s,ya,yb,mat){L(g,s.xc-0.004,s.xc+0.004,ya,yb,s.z0+0.02,s.z1-0.02,mat||M.glass,true);}
 // 1. Atelier : petits carreaux, petits bois chêne 24 mm
-function vAtelier(s,cols,rows){const g=VSTY.atelier,b=0.04,t=0.022,w=(SZ1-SZ0-2*b)/cols,h=(s.y1-s.y0-2*b)/rows;vFrame(g,s,M.oak,b,t);vGlass(g,s,s.y0+b,s.y1-b);
-  for(let i=1;i<cols;i++){const z=SZ0+b+i*w;L(g,s.xc-0.016,s.xc+0.016,s.y0+b,s.y1-b,z-0.012,z+0.012,M.oak);}
-  for(let j=1;j<rows;j++){const y=s.y0+b+j*h;L(g,s.xc-0.016,s.xc+0.016,y-0.012,y+0.012,SZ0+b,SZ1-b,M.oak);}}
-vAtelier(VS.S,8,1);vAtelier(VS.K,6,4);
+function vAtelier(g,s,cols,rows){const b=0.04,t=0.022,w=(s.z1-s.z0-2*b)/cols,h=(s.y1-s.y0-2*b)/rows;vFrame(g,s,M.oak,b,t);vGlass(g,s,s.y0+b,s.y1-b);
+  for(let i=1;i<cols;i++){const z=s.z0+b+i*w;L(g,s.xc-0.016,s.xc+0.016,s.y0+b,s.y1-b,z-0.012,z+0.012,M.oak);}
+  for(let j=1;j<rows;j++){const y=s.y0+b+j*h;L(g,s.xc-0.016,s.xc+0.016,y-0.012,y+0.012,s.z0+b,s.z1-b,M.oak);}}
 // 2. Arches : vitraux à sommet cintré (cadres chêne découpés)
-function vArche(s,n){const g=VSTY.arche,w=(SZ1-SZ0)/n,h=s.y1-s.y0,fr=0.03,r=(w-2*fr)/2,d=0.04;vGlass(g,s,s.y0+0.02,s.y1-0.02);
+function vArche(g,s,n){const w=(s.z1-s.z0)/n,h=s.y1-s.y0,fr=0.03,r=(w-2*fr)/2,d=0.04;vGlass(g,s,s.y0+0.02,s.y1-0.02);
   const sh=new THREE.Shape();sh.moveTo(0,0);sh.lineTo(w,0);sh.lineTo(w,h);sh.lineTo(0,h);sh.lineTo(0,0);
   const ho=new THREE.Path();ho.moveTo(fr,fr);ho.lineTo(w-fr,fr);ho.lineTo(w-fr,h-fr-r);ho.absarc(w/2,h-fr-r,r,0,Math.PI,false);ho.lineTo(fr,fr);sh.holes.push(ho);
   const geo=new THREE.ExtrudeGeometry(sh,{depth:d,bevelEnabled:false,curveSegments:24});
-  for(let i=0;i<n;i++){const m=new THREE.Mesh(geo,M_oakS);m.rotation.y=Math.PI/2;m.position.set(s.xc-d/2,s.y0,SZ0+(i+1)*w);m.castShadow=true;g.add(m);}}
-vArche(VS.S,8);vArche(VS.K,4);
+  for(let i=0;i<n;i++){const m=new THREE.Mesh(geo,M_oakS);m.rotation.y=Math.PI/2;m.position.set(s.xc-d/2,s.y0,s.z0+(i+1)*w);m.castShadow=true;g.add(m);}}
 // 3. Lattes : tasseaux chêne verticaux ajourés devant le vitrage
-function vLattes(s,mid){const g=VSTY.lattes,b=0.04,t=0.022;vFrame(g,s,M.oak,b,t);vGlass(g,s,s.y0+b,s.y1-b);
-  for(let z=SZ0+b+0.05;z<SZ1-b-0.03;z+=0.07)L(g,s.xc-0.02,s.xc+0.02,s.y0+b,s.y1-b,z,z+0.02,M.oak);
-  if(mid)L(g,s.xc-t,s.xc+t,mid,mid+0.04,SZ0+b,SZ1-b,M.oak);}
-vLattes(VS.S,0);vLattes(VS.K,2.04);
+function vLattes(g,s,mid){const b=0.04,t=0.022;vFrame(g,s,M.oak,b,t);vGlass(g,s,s.y0+b,s.y1-b);
+  for(let z=s.z0+b+0.05;z<s.z1-b-0.03;z+=0.07)L(g,s.xc-0.02,s.xc+0.02,s.y0+b,s.y1-b,z,z+0.02,M.oak);
+  if(mid)L(g,s.xc-t,s.xc+t,mid,mid+0.04,s.z0+b,s.z1-b,M.oak);}
 // 4. Cannelé : verre strié + profils noyer fins, imposte claire côté cuisine
-function vCannele(s,imp){const g=VSTY.cannele,b=0.028,t=0.016;vFrame(g,s,M_wal,b,t);const n=3,w=(SZ1-SZ0)/n;
-  for(let i=1;i<n;i++){const z=SZ0+i*w;L(g,s.xc-t,s.xc+t,s.y0+b,s.y1-b,z-0.012,z+0.012,M_wal);}
-  if(imp){vGlass(g,s,s.y0+b,imp,M_reed);L(g,s.xc-t,s.xc+t,imp,imp+0.025,SZ0+b,SZ1-b,M_wal);vGlass(g,s,imp+0.025,s.y1-b);}else vGlass(g,s,s.y0+b,s.y1-b,M_reed);}
-vCannele(VS.S,0);vCannele(VS.K,2.0);
+function vCannele(g,s,imp){const b=0.028,t=0.016;vFrame(g,s,M_wal,b,t);const n=Math.max(2,Math.round((s.z1-s.z0)/0.65)),w=(s.z1-s.z0)/n;
+  for(let i=1;i<n;i++){const z=s.z0+i*w;L(g,s.xc-t,s.xc+t,s.y0+b,s.y1-b,z-0.012,z+0.012,M_wal);}
+  if(imp){vGlass(g,s,s.y0+b,imp,M_reed);L(g,s.xc-t,s.xc+t,imp,imp+0.025,s.z0+b,s.z1-b,M_wal);vGlass(g,s,imp+0.025,s.y1-b);}else vGlass(g,s,s.y0+b,s.y1-b,M_reed);}
+vAtelier(vSal.atelier,VS.S,6,1);vAtelier(vKs.atelier,VS.K,4,4);vAtelier(vKl.atelier,VS.KL,7,4);
+vArche(vSal.arche,VS.S,6);vArche(vKs.arche,VS.K,3);vArche(vKl.arche,VS.KL,5);
+vLattes(vSal.lattes,VS.S,0);vLattes(vKs.lattes,VS.K,2.04);vLattes(vKl.lattes,VS.KL,2.04);
+vCannele(vSal.cannele,VS.S,0);vCannele(vKs.cannele,VS.K,2.0);vCannele(vKl.cannele,VS.KL,2.0);
 let verrStyle='atelier';
-function applyVerr(){for(const k in VSTY)VSTY[k].visible=k===verrStyle;document.querySelectorAll('[data-verr]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.verr===verrStyle));}
+function applyVerr(){[vSal,vKs,vKl].forEach(o=>STY.forEach(k=>o[k].visible=k===verrStyle));document.querySelectorAll('[data-verr]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.verr===verrStyle));}
 document.querySelectorAll('[data-verr]').forEach(b=>b.addEventListener('click',()=>{verrStyle=b.dataset.verr;applyVerr();}));applyVerr();
 // façade côté porte : trumeaux et linteau (2,08 → plafond)
 L(stairFull,-0.2,0.08,0,H,SZ1-0.04,SZ1,WKS);L(stairFull,0.85,0.9,0,H,SZ1-0.04,SZ1,WK);L(stairFull,0.08,0.85,2.08,H,SZ1-0.04,SZ1,WK);
@@ -707,7 +714,7 @@ const bDoor=new THREE.Group();bDoor.position.set(0.1,0,SZ1+0.045);scene.add(bDoo
 L(bDoor,0,0.73,0,2.04,-0.015,0.015,M.door);cyl(bDoor,0.01,0.12,0.66,1.0,0.03,M.steel,0,Math.PI/2);
 function flatLabel(text,x,z,w){const m=new THREE.Mesh(new THREE.PlaneGeometry(w,w/4),new THREE.MeshBasicMaterial({map:labelTex(text),transparent:true,depthWrite:false}));
   m.rotation.x=-Math.PI/2;m.position.set(x,H+0.01,z);scene.add(m);}
-flatLabel('Rangement',1.35,0.45,0.85);flatLabel('Escalier',0.35,1.1,0.85);flatLabel('WC',2.3,3.85,1.0);flatLabel('Gaine',3.345,0.15,0.3);
+flatLabel('Rangement',1.35,0.45,0.85);rangG.attach(scene.children[scene.children.length-1]);flatLabel('Escalier',0.35,1.1,0.85);flatLabel('WC',2.3,3.85,1.0);flatLabel('Gaine',3.345,0.15,0.3);
 // cloisons supprimées
 const ghost=new THREE.Group();scene.add(ghost);ghost.visible=false;
 L(ghost,-0.1,0,0,H,SZ1+0.47,ZB,M.ghost,true);L(ghost,-0.1,1.03,0,H,ZB,ZB+0.1,M.ghost,true);
@@ -1016,7 +1023,7 @@ const VIEWS={
   acces:{p:[0.55,1.6,4.6],t:[0.3,1.1,2.25]},
   hob:{p:[1.15,1.62,2.3],t:[3.5,1.2,1.4]},
   sink:{p:[2.1,1.62,0.95],t:[2.4,1.0,3.12]},
-  left:{p:[3.0,1.6,2.75],t:[0.9,1.1,1.2]},
+  left:{p:[2.6,1.75,0.45],t:[0.9,1.15,1.95]},
   table:{p:[-0.3,1.8,7.7],t:[-2.75,0.75,4.8]},
   top:{p:[-0.4,13.5,3.02],t:[-0.4,0,3.0]},
   stair:{p:[0.45,2.35,3.0],t:[0.45,-1.4,1.2]}
@@ -1080,9 +1087,13 @@ function applyStair(){const was=stairOpen;stairOpen=!closedMode&&document.getEle
   lfWall.visible=!stairOpen;lfSplash.visible=!stairOpen;lfSplashLow.visible=stairOpen;
   corner.visible=!closedMode&&!stairOpen;cornerLow.visible=stairOpen;gate.visible=stairOpen;bDoor.visible=!stairOpen;
   if(was!==stairOpen){doorT=0;if(stairOpen){slide=slideT=0;dragging=null;}}
-  document.getElementById('verr-box').hidden=!stairOpen;
+  document.getElementById('verr-box').hidden=!stairOpen;applyRang();
   document.querySelectorAll('.acc .panel-only').forEach(el=>el.hidden=closedMode||stairOpen);setAccess();syncUI();}
 document.getElementById('t-stair').addEventListener('change',applyStair);
+// option sans rangement : rangement et radiateur retirés, mur de cage et verrière côté cuisine prolongés jusqu'au mur fenêtre
+function applyRang(){noRang=document.getElementById('t-norang').checked;rangG.visible=!noRang;
+  kUpLow.visible=noRang&&stairOpen;kUpFull.visible=!kUpLow.visible;vKs.p.visible=!noRang;vKl.p.visible=noRang;}
+document.getElementById('t-norang').addEventListener('change',()=>{applyRang();if(walking)collectMeshes();});
 document.getElementById('mode-open').addEventListener('click',()=>setMode(false));
 document.getElementById('mode-closed').addEventListener('click',()=>setMode(true));
 document.getElementById('t-ghost').addEventListener('change',e=>{ghost.visible=e.target.checked&&!closedMode;});
@@ -1254,9 +1265,10 @@ function topView(runs){const d=new Drw(13),C=v=>v*100;
   // bâti
   wall(-0.2,1.81,-0.2,0);wall(2.91,XR+0.2,-0.2,0);d.rc(C(1.81),C(-0.2),C(2.91),0,0.4);d.ln(C(1.81),C(-0.1),C(2.91),C(-0.1),0.4);
   wall(XR,XR+0.2,0,4.73);wall(3.19,XR,0,0.29);
-  d.rc(C(0.9),0,C(1.8),C(SZ0),0.6);d.ln(C(0.9),0,C(1.8),C(SZ0),0.3);d.ln(C(1.8),0,C(0.9),C(SZ0),0.3);d.tx(C(1.35),C(0.42),'rangement',{k:0.62});
-  d.ln(C(1.8),C(0.1),C(1.8),C(0.8),1.2);d.tx(C(2.02),C(0.5),'porte 70',{k:0.5,rot:-90});
-  d.rc(C(1.0),C(SZ0+0.03),C(1.7),C(SZ0+0.11),0.4);d.tx(C(1.35),C(SZ0+0.27),'radiateur',{k:0.5});
+  if(!noRang){d.rc(C(0.9),0,C(1.8),C(SZ0),0.6);d.ln(C(0.9),0,C(1.8),C(SZ0),0.3);d.ln(C(1.8),0,C(0.9),C(SZ0),0.3);d.tx(C(1.35),C(0.42),'rangement',{k:0.62});
+    d.ln(C(1.8),C(0.1),C(1.8),C(0.8),1.2);d.tx(C(2.02),C(0.5),'porte 70',{k:0.5,rot:-90});
+    d.rc(C(1.0),C(SZ0+0.03),C(1.7),C(SZ0+0.11),0.4);d.tx(C(1.35),C(SZ0+0.27),'radiateur',{k:0.5});}
+  else d.tx(C(1.35),C(0.45),'sans rangement'+(stairOpen?' · verrière jusqu\'au mur':''),{k:0.55});
   d.rc(C(-0.2),0,C(0.9),C(SZ1),0.6);
   for(let i=1;i<10;i++)d.ln(C(SW0),C(SZ1-0.22*i),C(SW1),C(SZ1-0.22*i),0.3);d.rc(C(SW0),0,C(SW1),C(SZ1),0.4);
   d.ln(C(0.45),C(SZ1-0.14),C(0.45),C(0.26),0.5);d.pl([[C(0.45),C(0.17)],[C(0.41),C(0.27)],[C(0.49),C(0.27)]],0.4,{fill:'#111'});
