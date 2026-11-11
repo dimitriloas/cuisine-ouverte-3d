@@ -289,7 +289,7 @@ body.photo{padding:0}
   <details class="opt" id="legend-box"><summary>Aménagement <span class="cur"></span></summary>
     <dl>
       <dt>L droit</dt><dd>Mur droit : frigo pose libre, lave-vaisselle, évier sur sous-évier 60, meuble 43, angle à porte battante. Retour le long du WC : four sous plaque induction et hotte, meuble 50. Aucun tiroir ni rangement coulissant : toutes les façades sont à porte battante</dd>
-      <dt>Hauts</dt><dd>De 1,45 m jusqu'au plafond (2,50 m)</dd>
+      <dt>Hauts</dt><dd>Meubles hauts de 70 cm, de 1,45 à 2,15 m, sans corniche (35 cm libres sous le plafond de 2,50 m)</dd>
       <dt>Sous-sol</dt><dd>Porte du sous-sol apparente côté salon (plus de meuble d'angle), passage 73 cm</dd>
       <dt>Buffet</dt><dd>Buffet 1,50 × 0,46 m, hauteur 85 cm, le long du mur côté salon (2 portes, 3 tiroirs, plateau chêne), étagères ouvertes 70 cm contre le mur côté fenêtre</dd>
       <dt>Mur fenêtre</dt><dd>Prolongé côté salon jusqu'au canapé</dd>
@@ -723,7 +723,7 @@ floorStrip(-0.1,0,SZ1,ZB);floorStrip(-0.1,1.03,ZB,ZB+0.1);
 const swing=new THREE.Mesh(new THREE.RingGeometry(0.0,0.73,40,1,-Math.PI/2,Math.PI/2),M.swing);swing.rotation.x=-Math.PI/2;swing.position.set(0.1,0.004,SZ1+0.045);scene.add(swing);
 
 /* ---------- Mobilier de cuisine ---------- */
-const GAP=0.0035,TOP=0.88,WT=0.04,UP=1.45;
+const GAP=0.0035,TOP=0.88,WT=0.04,UP=1.45,WTOP=UP+0.70;   // meubles hauts 70 cm, sans corniche (35 cm libres sous plafond)
 const handleMeshes=[],splashMeshes=[];
 function run(x,z,rot){const g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=rot;scene.add(g);return g;}
 function hm(m){handleMeshes.push(m);return m;}
@@ -748,8 +748,8 @@ const U={
     const cuts=kind==='fridge'?[0.1,0.92,2.06,H]:[0.1,2.06,H];for(let i=0;i<cuts.length-1;i++)fr(g,s,e,cuts[i],cuts[i+1],M.tall,0.58,0.6);
     if(kind==='fridge'){handleV(g,s+0.045,0.62,0.88,0.6);handleV(g,s+0.045,0.98,1.36,0.6);}else handleV(g,e-0.045,0.85,1.35,0.6);}
 };
-function wallUnits(g,s,e,y0){L(g,s,e,y0,H,0,0.35,M.carcass);const parts=e-s>0.65?[[s,(s+e)/2],[(s+e)/2,e]]:[[s,e]];
-  parts.forEach(([a,b],i)=>{const split=y0<1.6?2.12:H;fr(g,a,b,y0,split,M.tall,0.35,0.37);if(split<H)fr(g,a,b,split,H,M.tall,0.35,0.37);
+function wallUnits(g,s,e,y0){L(g,s,e,y0,WTOP,0,0.35,M.carcass);const parts=e-s>0.65?[[s,(s+e)/2],[(s+e)/2,e]]:[[s,e]];
+  parts.forEach(([a,b],i)=>{const split=WTOP;fr(g,a,b,y0,split,M.tall,0.35,0.37);
     const hx=parts.length===2?(i===0?b-0.045:a+0.045):b-0.045;if(split-y0>0.3)handleV(g,hx,y0+0.04,y0+0.24,0.37);});
   L(g,s+0.02,e-0.02,y0-0.008,y0-0.002,0.27,0.31,M.led,true);}
 function hood(g,s,e){wallUnits(g,s,e,1.78);L(g,s+0.01,e-0.01,1.6,1.78,0.0,0.36,M.steel);L(g,s+0.01,e-0.01,1.6,1.66,0.36,0.44,M.blackGlass);L(g,s+0.06,e-0.06,1.596,1.6,0.06,0.32,M.black,true);}
@@ -1372,17 +1372,17 @@ function elevView(r){const d=new Drw(10),X=v=>v*100,Y=v=>-v*100,g=0.0035;
   if(r.hob){R2(r.hob.s,r.hob.e,TOP+WT,TOP+WT+0.012,0.4,{fill:'#111'});d.tag(X((r.hob.s+r.hob.e)/2),Y(1.05),r.hob.r);}
   if(r.sink){const c=(r.sink.s+r.sink.e)/2;R2(r.sink.s,r.sink.e,TOP+WT-0.19,TOP+WT,0.4,{dash:'4 3'});
     d.ln(X(c),Y(TOP+WT),X(c),Y(TOP+WT+0.32),1);d.ln(X(c-0.025),Y(TOP+WT+0.32),X(c+0.025),Y(TOP+WT+0.32),1);d.tag(X(c)+16,Y(1.07),r.sink.r);}
-  r.wall.forEach(u=>{const s=u.s,e=u.e,c=(s+e)/2,split=u.y0<1.6?2.12:H,parts=e-s>0.65?[[s,c],[c,e]]:[[s,e]];R2(s,e,u.y0,H,0.4);
-    parts.forEach(([a,b],i)=>{R2(a+g,b-g,u.y0+g,split-g,0.6);if(split<H)R2(a+g,b-g,split+g,H-g,0.6);
+  r.wall.forEach(u=>{const s=u.s,e=u.e,c=(s+e)/2,split=WTOP,parts=e-s>0.65?[[s,c],[c,e]]:[[s,e]];R2(s,e,u.y0,WTOP,0.4);
+    parts.forEach(([a,b],i)=>{R2(a+g,b-g,u.y0+g,split-g,0.6);
       const hx=parts.length===2?(i===0?b-0.045:a+0.045):b-0.045;if(split-u.y0>0.3)hv(hx,u.y0+0.04,u.y0+0.24);});
-    d.tag(X(c),Y(split<H?(u.y0+split)/2+0.06:(u.y0+H)/2),u.r);});
+    d.tag(X(c),Y((u.y0+WTOP)/2),u.r);});
   if(r.hood){const h=r.hood;R2(h.s+0.01,h.e-0.01,1.6,1.78,0.6);d.ln(X(h.s+0.01),Y(1.66),X(h.e-0.01),Y(1.66),0.4);d.tag(X(h.e)-14,Y(1.69),h.r);
     d.dimV([Y(TOP+WT),Y(1.6)],X(h.s)+10,null);}
   // cotes : largeurs (bas, total, hauts) et niveaux
   const bx=[];r.base.forEach(m=>bx.push(m.s,m.e));d.dimH(bx.map(X),30,0);d.dimH([s0,s1].map(X),58,0);
   if(r.wall.length){const wx=[];r.wall.forEach(u=>wx.push(u.s,u.e));d.dimH(wx.map(X),Y(H)-30,Y(H));
     if(r.wall.length>1)d.dimH([Math.min(...wx),Math.max(...wx)].map(X),Y(H)-58,Y(H));}
-  const lv=new Set([0,0.1,TOP,TOP+WT]);if(high)lv.add(H);if(r.base.some(m=>m.k==='free'))lv.add(1.85);r.wall.forEach(u=>{lv.add(u.y0);if(u.y0<1.6)lv.add(2.12);});if(hasTall)lv.add(2.06);
+  const lv=new Set([0,0.1,TOP,TOP+WT]);if(high)lv.add(H);if(r.base.some(m=>m.k==='free'))lv.add(1.85);r.wall.forEach(u=>{lv.add(u.y0);lv.add(WTOP);});if(hasTall)lv.add(2.06);
   d.dimV([...lv].map(Y),X(s0)-32,X(s0));
   return d.svg(X(s0)-82,(high?Y(H):Y(TOP+WT)-30)-80,X(s1)+78,80,1.75);}
 function rowsFor(r){const out=[],cm=v=>fmtc(v*100);
@@ -1390,7 +1390,7 @@ function rowsFor(r){const out=[],cm=v=>fmtc(v*100);
     out.push([m.r,m.n,cm(m.e-m.s),tall?cm(H):cm(TOP)+' (plinthe 10)',tall?'60':'60 (58 + façade 2)',tall?'0 → '+cm(H):'0 → '+cm(TOP)]);});
   r.panels.forEach(p=>out.push(['—','Joue de finition',cm(p.e-p.s),cm(p.h),cm(p.d),'0 → '+cm(p.h)]));
   r.tops.forEach(t=>out.push([t.r,'Plan de travail (épaisseur 4)',cm(t.e-t.s),'4',cm(t.d-t.p0),cm(TOP)+' → '+cm(TOP+WT)]));
-  r.wall.forEach(u=>out.push([u.r,'Meuble haut '+(u.e-u.s>0.65?'2 portes':'1 porte')+(u.y0<1.6?' + porte(s) hautes 212 → 250':''),cm(u.e-u.s),cm(H-u.y0),'37 (35 + façade 2)',cm(u.y0)+' → '+cm(H)]));
+  r.wall.forEach(u=>out.push([u.r,'Meuble haut '+(u.e-u.s>0.65?'2 portes':'1 porte')+' (sans corniche)',cm(u.e-u.s),cm(WTOP-u.y0),'37 (35 + façade 2)',cm(u.y0)+' → '+cm(WTOP)]));
   r.apps.forEach(a=>out.push([a.r,a.n,fmtc(a.L),fmtc(a.H),fmtc(a.P),a.c]));
   return out;}
 function tbl(head,rows,num){num=num||[2,3,4];return `<div class="plan-tblw"><table class="plan-tbl"><thead><tr>${head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td${num.includes(i)?' class="n"':''}>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
