@@ -282,7 +282,7 @@ body.photo{padding:0}
     <label><input type="checkbox" id="t-claustra2"> Claustra derrière le canapé</label>
     <label><input type="checkbox" id="t-island" disabled> Îlot central — pas de place (cuisine 3,50 × 3,12 m)</label>
     <label><input type="checkbox" id="t-norang" checked> Sans rangement ni radiateur (mur d'escalier jusqu'au mur fenêtre)</label>
-    <label class="panel-only"><input type="checkbox" id="t-stair"> Escalier ouvert : murs latéraux à 1,10 m</label>
+    <label class="panel-only"><input type="checkbox" id="t-stair" checked> Escalier ouvert : murs latéraux à 1,10 m</label>
     <div id="verr-box" hidden><div class="sub" style="margin-top:2px">Style des verrières</div><div class="seg" style="grid-template-columns:repeat(4,1fr)" role="group" aria-label="Style des verrières"><button type="button" data-verr="atelier" aria-pressed="true">Atelier</button><button type="button" data-verr="arche" aria-pressed="false">Arches</button><button type="button" data-verr="lattes" aria-pressed="false">Lattes</button><button type="button" data-verr="cannele" aria-pressed="false">Cannelé</button></div></div>
   </div>
 
@@ -1124,7 +1124,7 @@ function applyRang(){noRang=document.getElementById('t-norang').checked;rangG.vi
   kUpLow.visible=noRang&&stairOpen;kUpFull.visible=!kUpLow.visible;vKs.p.visible=!noRang;vKl.p.visible=noRang;
   cornerK.visible=noRang&&!closedMode;credLo.visible=stairOpen;credHi.visible=!stairOpen;}
 document.getElementById('t-norang').addEventListener('change',()=>{applyRang();if(walking)collectMeshes();});
-applyRang();   // par défaut : cuisine ouverte, sans rangement
+applyStair();   // par défaut : cuisine ouverte, sans rangement, escalier ouvert
 document.getElementById('mode-open').addEventListener('click',()=>setMode(false));
 document.getElementById('mode-closed').addEventListener('click',()=>setMode(true));
 document.getElementById('t-ghost').addEventListener('change',e=>{ghost.visible=e.target.checked&&!closedMode;});
