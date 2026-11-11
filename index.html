@@ -288,7 +288,7 @@ body.photo{padding:0}
 
   <details class="opt" id="legend-box"><summary>Aménagement <span class="cur"></span></summary>
     <dl>
-      <dt>L droit</dt><dd>Mur droit : frigo pose libre, lave-vaisselle, four sous induction (bandeau fixe), meuble 43, angle à porte battante. Retour le long du WC : évier sur meuble 80 + meuble 30. Aucun tiroir ni rangement coulissant : toutes les façades sont à porte battante</dd>
+      <dt>L droit</dt><dd>Mur droit : frigo pose libre, lave-vaisselle, évier sur sous-évier 60, meuble 43, angle à porte battante. Retour le long du WC : four sous plaque induction et hotte, meuble 50. Aucun tiroir ni rangement coulissant : toutes les façades sont à porte battante</dd>
       <dt>Hauts</dt><dd>De 1,45 m jusqu'au plafond (2,50 m)</dd>
       <dt>Sous-sol</dt><dd>Porte du sous-sol apparente côté salon (plus de meuble d'angle), passage 73 cm</dd>
       <dt>Buffet</dt><dd>Buffet 1,50 × 0,46 m, hauteur 85 cm, le long du mur côté salon (2 portes, 3 tiroirs, plateau chêne), étagères ouvertes 70 cm contre le mur côté fenêtre</dd>
@@ -765,21 +765,24 @@ const R=run(XR,0.29,-Math.PI/2);   // de la gaine (z 0,29) au mur du WC (z 3,12)
   L(R,a+0.005,b-0.005,0.7,0.712,P-0.05,P-0.01,M.black,true);
   L(R,b-0.055,b-0.04,0.42,0.66,P,P+0.03,M.steel);L(R,b-0.055,b-0.04,0.76,1.3,P,P+0.03,M.steel);
   [a+0.04,b-0.04].forEach(x=>L(R,x-0.02,x+0.02,0,0.02,0.45,0.55,M.black));})();
-U.dishwasher(R,0.6,1.2);U.oven(R,1.2,1.8);U.doors(R,1.8,2.23);U.corner(R,2.23,2.83);   // aucun tiroir ni coulissant : portes battantes
-worktop(R,0.6,2.83);splash(R,0.6,2.83);L(R,1.22,1.78,TOP+WT,TOP+WT+0.006,0.04,0.56,M.hob);
-wallUnits(R,0.6,1.2,UP);hood(R,1.2,1.8);wallUnits(R,1.8,2.23,UP);wallUnits(R,2.23,2.83,UP);
+// évier sous plan : cuve a..b (profondeur 0,12..0,52), mitigeur au centre
+function sinkBasin(g,a,b){const c=(a+b)/2;
+  L(g,a,b,TOP,TOP+WT,0,0.12,M.worktop);L(g,a,b,TOP,TOP+WT,0.52,0.62,M.worktop);
+  L(g,a,b,TOP-0.19,TOP-0.18,0.12,0.52,M.steel);
+  L(g,a,a+0.01,TOP-0.19,TOP+WT-0.002,0.12,0.52,M.steel,true);L(g,b-0.01,b,TOP-0.19,TOP+WT-0.002,0.12,0.52,M.steel,true);
+  L(g,a,b,TOP-0.19,TOP+WT-0.002,0.12,0.13,M.steel,true);L(g,a,b,TOP-0.19,TOP+WT-0.002,0.51,0.52,M.steel,true);
+  cyl(g,0.022,0.02,c,TOP-0.175,0.32,M.black);cyl(g,0.016,0.32,c,TOP+WT+0.16,0.06,M.tap);
+  const t=new THREE.Mesh(new THREE.TorusGeometry(0.09,0.013,12,28,Math.PI),M.tap);t.rotation.y=Math.PI/2;t.position.set(c,TOP+WT+0.32,0.15);t.castShadow=true;g.add(t);
+  cyl(g,0.013,0.05,c,TOP+WT+0.3,0.24,M.tap);cyl(g,0.006,0.08,c+0.035,TOP+WT+0.1,0.06,M.tap,0,Math.PI/2.4);}
+// mur droit : frigo, lave-vaisselle, évier (sous-évier 60), meuble 43, angle — portes battantes uniquement
+U.dishwasher(R,0.6,1.2);U.doors(R,1.2,1.8);U.doors(R,1.8,2.23);U.corner(R,2.23,2.83);
+L(R,0.6,1.25,TOP,TOP+WT,0,0.62,M.worktop);L(R,1.75,2.83,TOP,TOP+WT,0,0.62,M.worktop);sinkBasin(R,1.25,1.75);splash(R,0.6,2.83);
+wallUnits(R,0.6,1.2,UP);wallUnits(R,1.2,1.8,UP);wallUnits(R,1.8,2.23,UP);wallUnits(R,2.23,2.83,UP);
 // retour le long du WC
-const B=run(XR,ZB,Math.PI);
-U.doors(B,0.6,1.4);U.doors(B,1.4,1.7);endPanel(B,1.7,1,TOP+WT,M.base,0.62);
-L(B,0.6,0.7,TOP,TOP+WT,0,0.62,M.worktop);L(B,1.3,1.72,TOP,TOP+WT,0,0.62,M.worktop);L(B,0.7,1.3,TOP,TOP+WT,0,0.12,M.worktop);L(B,0.7,1.3,TOP,TOP+WT,0.52,0.62,M.worktop);
-L(B,0.7,1.3,TOP-0.19,TOP-0.18,0.12,0.52,M.steel);
-L(B,0.7,0.71,TOP-0.19,TOP+WT-0.002,0.12,0.52,M.steel,true);L(B,1.29,1.3,TOP-0.19,TOP+WT-0.002,0.12,0.52,M.steel,true);
-L(B,0.7,1.3,TOP-0.19,TOP+WT-0.002,0.12,0.13,M.steel,true);L(B,0.7,1.3,TOP-0.19,TOP+WT-0.002,0.51,0.52,M.steel,true);
-cyl(B,0.022,0.02,1.0,TOP-0.175,0.32,M.black);splash(B,0.0,1.7);
-cyl(B,0.016,0.32,1.0,TOP+WT+0.16,0.06,M.tap);
-(function(){const t=new THREE.Mesh(new THREE.TorusGeometry(0.09,0.013,12,28,Math.PI),M.tap);t.rotation.y=Math.PI/2;t.position.set(1.0,TOP+WT+0.32,0.15);t.castShadow=true;B.add(t);
-  cyl(B,0.013,0.05,1.0,TOP+WT+0.3,0.24,M.tap);cyl(B,0.006,0.08,1.035,TOP+WT+0.1,0.06,M.tap,0,Math.PI/2.4);})();
-wallUnits(B,0.35,0.9,UP);wallUnits(B,0.9,1.4,UP);wallUnits(B,1.4,1.7,UP);
+const B=run(XR,ZB,Math.PI);   // retour le long du WC : cuisson (four sous induction, hotte) + meuble 50
+U.oven(B,0.6,1.2);U.doors(B,1.2,1.7);endPanel(B,1.7,1,TOP+WT,M.base,0.62);
+L(B,0.6,1.72,TOP,TOP+WT,0,0.62,M.worktop);L(B,0.62,1.18,TOP+WT,TOP+WT+0.006,0.04,0.56,M.hob);splash(B,0.0,1.7);
+wallUnits(B,0.35,0.6,UP);hood(B,0.6,1.2);wallUnits(B,1.2,1.7,UP);
 // coin fenêtre / escalier (cuisine ouverte + sans rangement) : angle 90 le long du mur fenêtre (arrêté avant la fenêtre) + meuble 2 portes 100 le long de l'escalier, crédence
 const cornerK=new THREE.Group();scene.add(cornerK);cornerK.visible=false;
 const credHi=new THREE.Group(),credLo=new THREE.Group();cornerK.add(credHi);cornerK.add(credLo);credLo.visible=false;
@@ -797,7 +800,7 @@ const lfSplashLow=L(Lf,0,1.65,TOP+WT,SOPEN,0,0.008,M.splash,true);splashMeshes.p
 const lfWall=new THREE.Group();Lf.add(lfWall);   // meubles hauts H11–H13, retirés si le mur de l'escalier est ouvert
 wallUnits(lfWall,0,0.55,UP);wallUnits(lfWall,0.55,1.1,UP);wallUnits(lfWall,1.1,1.65,UP);
 (function(){const bowl=new THREE.Mesh(new THREE.SphereGeometry(0.11,24,12,0,Math.PI*2,0,Math.PI/2),std('#d9d2c4',0.6));
-  bowl.rotation.x=Math.PI;bowl.position.set(2.45,TOP+WT+0.08,2.82);bowl.castShadow=true;scene.add(bowl);
+  bowl.rotation.x=Math.PI;bowl.position.set(1.95,TOP+WT+0.08,2.8);bowl.castShadow=true;scene.add(bowl);
   L(scene,3.12,3.4,TOP+WT,TOP+WT+0.02,2.35,2.75,M.oak);cyl(scene,0.09,0.13,3.3,TOP+WT+0.065,1.0,M.steel);})();
 
 /* ---------- Meuble TV le long du mur côté salon (x = -0,20) ---------- */
@@ -1050,8 +1053,8 @@ const VIEWS={
   sejour:{p:[-2.9,1.62,5.4],t:[2.6,1.05,1.8]},
   tv:{p:[-3.0,1.6,3.9],t:[-0.6,0.9,1.3]},
   acces:{p:[0.55,1.6,4.6],t:[0.3,1.1,2.25]},
-  hob:{p:[1.15,1.62,2.3],t:[3.5,1.2,1.4]},
-  sink:{p:[2.1,1.62,0.95],t:[2.4,1.0,3.12]},
+  hob:{p:[2.1,1.65,1.15],t:[2.6,1.1,3.12]},
+  sink:{p:[1.35,1.65,1.95],t:[3.5,1.0,1.75]},
   left:{p:[2.75,1.8,2.35],t:[0.9,0.95,0.6]},
   table:{p:[-0.5,1.9,4.3],t:[-2.05,0.75,1.9]},
   top:{p:[-0.4,13.5,3.02],t:[-0.4,0,3.0]},
@@ -1238,26 +1241,26 @@ window.addEventListener('keydown',e=>{if(e.code!=='Escape')return;
 function mkRun(id,name,tab,o,th,x){const c=Math.round(Math.cos(th)),s=Math.round(Math.sin(th));
   return Object.assign({id,name,tab,o,dx:[c,-s],dz:[s,c],base:[],panels:[],tops:[],wall:[],apps:[]},x);}
 function planRuns(){const P2=Math.PI/2;
-  const runs=[mkRun('R','Mur droit — frigo, lave-vaisselle et cuisson','Mur droit (cuisson)',[XR,0.29],-P2,{
+  const runs=[mkRun('R','Mur droit — frigo, lave-vaisselle et évier','Mur droit (évier)',[XR,0.29],-P2,{
     base:[{r:'E6',s:0,e:0.6,k:'free',n:'Réfrigérateur-congélateur pose libre (gris)'},
-      {r:'E5',s:0.6,e:1.2,k:'dw',n:'Façade lave-vaisselle'},{r:'B1',s:1.2,e:1.8,k:'oven',n:'Meuble four sous plaque (bandeau fixe)'},
+      {r:'E5',s:0.6,e:1.2,k:'dw',n:'Façade lave-vaisselle'},{r:'B1',s:1.2,e:1.8,k:'sink',n:'Sous-évier 1 porte 60'},
       {r:'B2',s:1.8,e:2.23,k:'door',n:'Meuble bas 1 porte 43'},{r:'B3',s:2.23,e:2.83,k:'corner',n:"Meuble bas d'angle, porte battante + étagère"}],
     panels:[],tops:[{r:'PT1',s:0.6,e:2.83,p0:0,d:0.62}],
-    wall:[{r:'H1',s:0.6,e:1.2,y0:UP},{r:'H2',s:1.2,e:1.8,y0:1.78},{r:'H3',s:1.8,e:2.23,y0:UP},{r:'H4',s:2.23,e:2.83,y0:UP}],
-    hood:{r:'E3',s:1.2,e:1.8},hob:{r:'E2',s:1.22,e:1.78},
-    apps:[{r:'E1',n:'Four encastrable (dans B1)',L:59.5,H:59.5,P:55,c:'28 → 88 (niche 60 × 60)'},
-      {r:'E2',n:'Plaque induction 4 foyers (sur PT1)',L:56,H:0.6,P:52,c:'92 (découpe ≈ 56 × 49)'},
-      {r:'E3',n:'Hotte intégrée (sous H2)',L:58,H:18,P:44,c:'160 → 178 (68 au-dessus du plan)'},
-      {r:'E5',n:'Lave-vaisselle tout intégrable (façade assortie), à côté du frigo',L:59.8,H:81.5,P:55,c:'0 → 88 (niche 60 × 82 à 88)'},
+    wall:[{r:'H1',s:0.6,e:1.2,y0:UP},{r:'H2',s:1.2,e:1.8,y0:UP},{r:'H3',s:1.8,e:2.23,y0:UP},{r:'H4',s:2.23,e:2.83,y0:UP}],
+    sink:{r:'E4',s:1.25,e:1.75},
+    apps:[{r:'E4',n:'Évier 1 cuve inox sous plan + mitigeur (sur B1)',L:50,H:19,P:40,c:'cuve 73 → 92'},
+      {r:'E5',n:'Lave-vaisselle tout intégrable (façade assortie), à côté de l\'évier',L:59.8,H:81.5,P:55,c:'0 → 88 (niche 60 × 82 à 88)'},
       {r:'E6',n:'Réfrigérateur-congélateur pose libre, gris (niche de 60 entre gaine et lave-vaisselle)',L:59,H:185,P:65,c:'0 → 185 (dépasse de 3 du plan de travail)'}],
     note:'de la gaine (29 cm) au mur du WC : 283 · toutes les façades à porte battante'}),
-   mkRun('B','Retour le long du WC — évier','Retour WC (évier)',[XR,ZB],Math.PI,{
-    base:[{r:'B3',s:0,e:0.6,k:'ghost'},{r:'B4',s:0.6,e:1.4,k:'sink',n:'Sous-évier 2 portes'},
-      {r:'B5',s:1.4,e:1.7,k:'door',n:'Meuble bas 1 porte 30'}],
+   mkRun('B','Retour le long du WC — cuisson','Retour WC (cuisson)',[XR,ZB],Math.PI,{
+    base:[{r:'B3',s:0,e:0.6,k:'ghost'},{r:'B4',s:0.6,e:1.2,k:'oven',n:'Meuble four sous plaque (bandeau fixe)'},
+      {r:'B5',s:1.2,e:1.7,k:'door',n:'Meuble bas 1 porte 50'}],
     panels:[{s:1.7,e:1.72,h:TOP+WT,d:0.62}],tops:[{r:'PT2',s:0.6,e:1.72,p0:0,d:0.62}],
-    wall:[{r:'H5',s:0.35,e:0.9,y0:UP},{r:'H6',s:0.9,e:1.4,y0:UP},{r:'H7',s:1.4,e:1.7,y0:UP}],
-    sink:{r:'E4',s:0.7,e:1.3},
-    apps:[{r:'E4',n:'Évier 1 cuve inox sous plan + mitigeur (sur B4)',L:60,H:19,P:40,c:'cuve 73 → 92'}],
+    wall:[{r:'H5',s:0.35,e:0.6,y0:UP},{r:'H6',s:0.6,e:1.2,y0:1.78},{r:'H7',s:1.2,e:1.7,y0:UP}],
+    hood:{r:'E3',s:0.6,e:1.2},hob:{r:'E2',s:0.62,e:1.18},
+    apps:[{r:'E1',n:'Four encastrable (dans B4)',L:59.5,H:59.5,P:55,c:'28 → 88 (niche 60 × 60)'},
+      {r:'E2',n:'Plaque induction 4 foyers (sur PT2)',L:56,H:0.6,P:52,c:'92 (découpe ≈ 56 × 49)'},
+      {r:'E3',n:'Hotte intégrée (sous H6)',L:58,H:18,P:44,c:'160 → 178 (68 au-dessus du plan)'}],
     note:'arrêté à 1,78 m de la cloison salon : 88 cm du mur de l\'escalier'})];
   if(!closedMode&&noRang){
     runs.push(mkRun('F','Coin fenêtre — meuble d\'angle','Coin fenêtre',[0.9,0],0,{
@@ -1332,7 +1335,7 @@ function topView(runs){const d=new Drw(13),C=v=>v*100;
   // cotes du bâti
   d.dimH([0,0.9,1.8,2.91,3.19,XR].map(C),C(-0.2)-35,C(-0.2));d.dimH([0,XR].map(C),C(-0.2)-75,C(-0.2));
   d.dimV([0,0.29,0.89,1.49,2.09,2.52,ZB].map(C),C(XR+0.2)+35,C(XR+0.2));d.dimV([0,ZB].map(C),C(XR+0.2)+75,C(XR+0.2));
-  d.dimH([XR,2.9,2.1,1.8,1.78].map(C),C(4.73)+35,C(4.73));d.dimH([XR,1.78,0].map(C),C(4.73)+72,C(4.73));
+  d.dimH([XR,2.9,2.3,1.8,1.78].map(C),C(4.73)+35,C(4.73));d.dimH([XR,1.78,0].map(C),C(4.73)+72,C(4.73));
   d.dimV([0,SZ0,SZ1,ZB].map(C),C(-0.2)-38,C(-0.2));d.dimH([0.9,XR].map(C),C(SZ1)+14,null);
   // passages
   if(kTable.visible){d.dimH([0.9,1.4].map(C),C(1.68),null);d.dimH([2.2,2.88].map(C),C(1.68),null);d.dimV([2.0,2.5].map(C),C(2.6),null);}
