@@ -296,7 +296,7 @@ body.photo{padding:0}
       <dt>Salon</dt><dd>Canapé 2,20 m retourné, dos à la table (sans tapis ni table basse)</dd>
       <dt>Fermée</dt><dd>Variante : cloisons conservées, porte de cuisine 83 cm côté WC, sans meuble d'angle (porte du sous-sol apparente). Meubles bas, plan et meubles hauts en L sur la cloison côté salon (2,41 m + retour 38 cm), hors débattement des deux portes</dd>
       <dt>Claustra</dt><dd>Option : claustra chêne toute hauteur entre canapé et table, du dossier jusqu'à 30 cm devant le canapé (1,25 m), à 10 cm du tapis. Activé, la table se décale de 60 cm vers la cuisine. Option : second claustra derrière le canapé, du mur côté fenêtre jusqu'à l'angle (3,10 m), au ras du tapis</dd>
-      <dt>Cuisine</dt><dd>Pièce de 3,50 m (cloison salon → mur droit) × 3,12 m (mur fenêtre → mur WC). L de cuisine : 2,83 m sur le mur droit (de la gaine au mur du WC), dont une niche de 60 cm pour un réfrigérateur-congélateur pose libre gris 59 × 65 × 185, retour de 1,72 m le long du WC (évier 80 + meuble 30), soit 88 cm jusqu'au mur de l'escalier. Petite table 80 × 65 cm et 2 chaises. L'îlot n'est plus proposé : il manque environ 1 m pour garder 70 cm de passage</dd>
+      <dt>Cuisine</dt><dd>Pièce de 3,50 m (cloison salon → mur droit) × 3,12 m (mur fenêtre → mur WC). L de cuisine : 2,83 m sur le mur droit (de la gaine au mur du WC), dont une niche de 60 cm pour un réfrigérateur-congélateur pose libre gris 59 × 65 × 185, retour de 1,72 m le long du WC (évier 80 + meuble 30), soit 88 cm jusqu'au mur de l'escalier. Cuisine ouverte : plus de table ; avec l'option « Sans rangement », meuble bas d'angle 90 le long du mur fenêtre (arrêté avant la fenêtre, allège à 40 cm) et meuble 2 portes 100 le long de l'escalier, avec crédence. Cuisine fermée : petite table 80 × 65 cm et 2 chaises. L'îlot n'est plus proposé : il manque environ 1 m pour garder 70 cm de passage</dd>
       <dt>Escalier</dt><dd>Descente au sous-sol derrière la porte : 10 marches de 21 cm (2,10 m), girons 22 cm, largeur 80 cm, main courante à 90 cm, palier bas face à la porte d'accès. Côté cuisine : 1,32 m de mur de la porte au rangement, puis rangement 90 × 90 cm en déport vers la cuisson (porte de 70 côté cuisson, radiateur en façade). Option « sans rangement » : rangement et radiateur retirés, le mur de cage côté cuisine (et sa verrière si l'escalier est ouvert) va jusqu'au mur de la fenêtre. Option cuisine ouverte : murs latéraux ouverts de 1,10 m au plafond avec chaperon chêne, surmontés de verrières à armature bois (côté salon 30 cm de haut, côté cuisine jusqu'au plafond), 4 styles au choix : atelier à petits carreaux, arches cintrées, lattes ajourées, verre cannelé et noyer ; meuble TV ramené à un meuble bas avec TV sur pied ; la colonne d'angle à panneau coulissant est remplacée par un meuble bas de 1,10 m qui s'arrête au bord du mur ouvert, et la porte du sous-sol par une barrière de sécurité enfant de 76 cm (barreaux espacés de moins de 6,5 cm)</dd>
       <dt>Repas</dt><dd>Table 2,70 × 0,90 m pour 10 personnes, parallèle au buffet (environ 1 m entre le buffet et le bord de la table), chaises et couverts dressés</dd>
     </dl>
@@ -627,10 +627,10 @@ const WB=[M.wallB,M.wallB,M.cap,M.wallB,M.wallB,M.wallB],WBS=[M.wallB,M.wallS,M.
 // mur côté fenêtre, prolongé côté salon jusqu'au canapé
 L(scene,-4.2,-0.2,0,H,-0.2,0,WS);
 L(scene,-0.2,1.81,0,H,-0.2,0,WK);L(scene,2.91,XR+0.2,0,H,-0.2,0,WK);
-L(scene,1.81,2.91,0,0.9,-0.2,0,WK);L(scene,1.81,2.91,2.15,H,-0.2,0,WK);
-L(scene,1.81,2.91,0.88,0.92,-0.2,0.04,M.frame);
-[[1.81,1.865],[2.855,2.91],[2.3325,2.3875]].forEach(([a,b])=>L(scene,a,b,0.92,2.15,-0.14,-0.06,M.frame));
-L(scene,1.81,2.91,2.1,2.15,-0.14,-0.06,M.frame);L(scene,1.865,2.855,0.92,2.1,-0.105,-0.095,M.glass,true);
+L(scene,1.81,2.91,0,0.38,-0.2,0,WK);L(scene,1.81,2.91,2.15,H,-0.2,0,WK);   // allège à 40 cm
+L(scene,1.81,2.91,0.38,0.42,-0.2,0.04,M.frame);
+[[1.81,1.865],[2.855,2.91],[2.3325,2.3875]].forEach(([a,b])=>L(scene,a,b,0.42,2.15,-0.14,-0.06,M.frame));
+L(scene,1.81,2.91,2.1,2.15,-0.14,-0.06,M.frame);L(scene,1.865,2.855,0.42,2.1,-0.105,-0.095,M.glass,true);L(scene,1.865,2.855,1.2,1.24,-0.12,-0.08,M.frame);
 L(scene,XR,XR+0.2,0,H,-0.2,4.73,WK);           // mur droit
 L(scene,3.19,XR,0,H,0,0.29,WK);             // gaine 31 × 29
 L(scene,-0.2,SW0,0,H,0,SZ0,WKS);   // haut de la cage côté salon : vide au-dessus de l'escalier
@@ -780,6 +780,15 @@ cyl(B,0.016,0.32,1.0,TOP+WT+0.16,0.06,M.tap);
 (function(){const t=new THREE.Mesh(new THREE.TorusGeometry(0.09,0.013,12,28,Math.PI),M.tap);t.rotation.y=Math.PI/2;t.position.set(1.0,TOP+WT+0.32,0.15);t.castShadow=true;B.add(t);
   cyl(B,0.013,0.05,1.0,TOP+WT+0.3,0.24,M.tap);cyl(B,0.006,0.08,1.035,TOP+WT+0.1,0.06,M.tap,0,Math.PI/2.4);})();
 wallUnits(B,0.35,0.9,UP);wallUnits(B,0.9,1.4,UP);wallUnits(B,1.4,1.7,UP);
+// coin fenêtre / escalier (cuisine ouverte + sans rangement) : angle 90 le long du mur fenêtre (arrêté avant la fenêtre) + meuble 2 portes 100 le long de l'escalier, crédence
+const cornerK=new THREE.Group();scene.add(cornerK);cornerK.visible=false;
+const credHi=new THREE.Group(),credLo=new THREE.Group();cornerK.add(credHi);cornerK.add(credLo);credLo.visible=false;
+const KF=run(0.9,0,0);cornerK.add(KF);   // le long du mur fenêtre, x 0,90 → 1,80
+carcass(KF,0,0.9);fr(KF,0,0.62,0.1,TOP,M.base,0.58,0.6);fr(KF,0.62,0.9,0.1,TOP,M.base,0.58,0.6);handleV(KF,0.665,TOP-0.22,TOP-0.05,0.6);
+endPanel(KF,0.9,1,TOP+WT,M.base,0.62);L(KF,0,0.92,TOP,TOP+WT,0,0.62,M.worktop);
+const KE=run(0.9,1.62,Math.PI/2);cornerK.add(KE);   // le long du mur de l'escalier, z 0,62 → 1,62
+U.doors(KE,0,1.0);endPanel(KE,0,-1,TOP+WT,M.base,0.62);L(KE,-0.02,1.0,TOP,TOP+WT,0,0.62,M.worktop);
+[[credHi,UP],[credLo,SOPEN]].forEach(([g,y])=>{const a=L(g,0.9,1.8,TOP+WT,y,0.0,0.008,M.splash,true),b=L(g,0.9,0.908,TOP+WT,y,0,1.62,M.splash,true);splashMeshes.push(a,b);});
 // linéaire gauche (contre l'escalier)
 const Lf=run(0.9,2.85,Math.PI/2);Lf.visible=false;   // plus de linéaire contre l'escalier : passage vers la cuisine et radiateur dégagés
 U.drawers(Lf,0,0.6);U.doors(Lf,0.6,1.2);U.doors(Lf,1.2,1.65);endPanel(Lf,0,-1,TOP+WT,M.base,0.62);
@@ -883,7 +892,8 @@ const kSwing=new THREE.Mesh(new THREE.RingGeometry(0.0,0.81,40,1,Math.PI/2,Math.
   U.doors(W2,0,0.38);L(W2,0,0.36,TOP,TOP+WT,0,0.62,M.worktop);splash(W2,0,0.38);wallUnits(W2,0,0.38,UP);})();
 
 /* ---------- Coin repas et salon ---------- */
-const kTable=new THREE.Group();scene.add(kTable);   // table de cuisine (remplacée par l'îlot si l'option est cochée)
+const kTable=new THREE.Group();scene.add(kTable);kTable.visible=false;   // table de cuisine : cuisine fermée uniquement
+   // table de cuisine (remplacée par l'îlot si l'option est cochée)
 L(kTable,1.4,2.2,0.72,0.755,1.35,2.0,M.oak);
 [[1.46,1.41],[2.14,1.41],[1.46,1.94],[2.14,1.94]].forEach(([x,z])=>L(kTable,x-0.025,x+0.025,0,0.72,z-0.025,z+0.025,M.black));
 function chair(x,z,face,p){const g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=face;(p||scene).add(g);
@@ -1042,7 +1052,7 @@ const VIEWS={
   acces:{p:[0.55,1.6,4.6],t:[0.3,1.1,2.25]},
   hob:{p:[1.15,1.62,2.3],t:[3.5,1.2,1.4]},
   sink:{p:[2.1,1.62,0.95],t:[2.4,1.0,3.12]},
-  left:{p:[2.6,1.75,0.45],t:[0.9,1.15,1.95]},
+  left:{p:[2.75,1.8,2.35],t:[0.9,0.95,0.6]},
   table:{p:[-0.5,1.9,4.3],t:[-2.05,0.75,1.9]},
   top:{p:[-0.4,13.5,3.02],t:[-0.4,0,3.0]},
   stair:{p:[0.45,2.35,3.0],t:[0.45,-1.4,1.2]}
@@ -1094,7 +1104,7 @@ setAccess();syncUI();
 function setCeil(on){ceil.visible=on;document.getElementById('ceil-on').setAttribute('aria-pressed',on?'true':'false');document.getElementById('ceil-off').setAttribute('aria-pressed',on?'false':'true');}
 document.getElementById('ceil-on').addEventListener('click',()=>setCeil(true));
 document.getElementById('ceil-off').addEventListener('click',()=>setCeil(false));
-function setMode(closed){closedMode=closed;corner.visible=false;closedG.visible=closed;traceG.visible=!closed;
+function setMode(closed){closedMode=closed;corner.visible=false;kTable.visible=closed;closedG.visible=closed;traceG.visible=!closed;
   ghost.visible=!closed&&document.getElementById('t-ghost').checked;
   if(closed){slide=slideT=0;dragging=null;renderer.domElement.style.cursor='';}else doorT=0;
   document.querySelectorAll('.panel-only').forEach(el=>el.hidden=closed);
@@ -1111,7 +1121,8 @@ function applyStair(){const was=stairOpen;stairOpen=!closedMode&&document.getEle
 document.getElementById('t-stair').addEventListener('change',applyStair);
 // option sans rangement : rangement et radiateur retirés, mur de cage et verrière côté cuisine prolongés jusqu'au mur fenêtre
 function applyRang(){noRang=document.getElementById('t-norang').checked;rangG.visible=!noRang;
-  kUpLow.visible=noRang&&stairOpen;kUpFull.visible=!kUpLow.visible;vKs.p.visible=!noRang;vKl.p.visible=noRang;}
+  kUpLow.visible=noRang&&stairOpen;kUpFull.visible=!kUpLow.visible;vKs.p.visible=!noRang;vKl.p.visible=noRang;
+  cornerK.visible=noRang&&!closedMode;credLo.visible=stairOpen;credHi.visible=!stairOpen;}
 document.getElementById('t-norang').addEventListener('change',()=>{applyRang();if(walking)collectMeshes();});
 document.getElementById('mode-open').addEventListener('click',()=>setMode(false));
 document.getElementById('mode-closed').addEventListener('click',()=>setMode(true));
@@ -1120,7 +1131,7 @@ document.getElementById('t-swing').addEventListener('change',e=>{swing.visible=e
 // claustra : affiché => la table se rapproche de 60 cm du mur de cuisine
 document.getElementById('t-claustra').addEventListener('change',e=>{claustra.visible=e.target.checked;tableTX=0;updateJoin();});
 document.getElementById('t-claustra2').addEventListener('change',e=>{claustra2.visible=e.target.checked;updateJoin();});
-document.getElementById('t-island').addEventListener('change',e=>{island.visible=e.target.checked;kTable.visible=!e.target.checked;});
+document.getElementById('t-island').addEventListener('change',e=>{island.visible=e.target.checked;kTable.visible=closedMode&&!e.target.checked;});
 const panelEl=document.querySelector('.panel'),pt=document.getElementById('ptoggle');
 function setPanel(open){panelEl.classList.toggle('collapsed',!open);pt.setAttribute('aria-expanded',open?'true':'false');
   pt.setAttribute('aria-label',open?'Masquer les réglages':'Afficher les réglages');}
@@ -1247,6 +1258,13 @@ function planRuns(){const P2=Math.PI/2;
     sink:{r:'E4',s:0.7,e:1.3},
     apps:[{r:'E4',n:'Évier 1 cuve inox sous plan + mitigeur (sur B4)',L:60,H:19,P:40,c:'cuve 73 → 92'}],
     note:'arrêté à 1,78 m de la cloison salon : 88 cm du mur de l\'escalier'})];
+  if(!closedMode&&noRang){
+    runs.push(mkRun('F','Coin fenêtre — meuble d\'angle','Coin fenêtre',[0.9,0],0,{
+      base:[{r:'B6',s:0,e:0.9,k:'corner',n:"Meuble bas d'angle 90 (porte battante 28, arrêté avant la fenêtre)"}],
+      panels:[{s:0.9,e:0.92,h:TOP+WT,d:0.62}],tops:[{r:'PT3',s:0,e:0.92,p0:0,d:0.62}],note:'fenêtre à 1,81 : allège à 40 cm du sol'}));
+    runs.push(mkRun('E','Mur de l\'escalier — meuble 100','Mur escalier',[0.9,1.62],P2,{
+      base:[{r:'B7',s:0,e:1.0,k:'doors',n:'Meuble bas 2 portes 100'}],
+      panels:[{s:-0.02,e:0,h:TOP+WT,d:0.62}],tops:[{r:'PT4',s:-0.02,e:1.0,p0:0,d:0.62}],note:'crédence sur les deux murs'+(stairOpen?' (arrêtée à 110)':'')}));}
   return runs;}
 // petit moteur de dessin SVG (unité = 1 cm)
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
@@ -1287,7 +1305,7 @@ function topView(runs){const d=new Drw(13),C=v=>v*100;
   if(!noRang){d.rc(C(0.9),0,C(1.8),C(SZ0),0.6);d.ln(C(0.9),0,C(1.8),C(SZ0),0.3);d.ln(C(1.8),0,C(0.9),C(SZ0),0.3);d.tx(C(1.35),C(0.42),'rangement',{k:0.62});
     d.ln(C(1.8),C(0.1),C(1.8),C(0.8),1.2);d.tx(C(2.02),C(0.5),'porte 70',{k:0.5,rot:-90});
     d.rc(C(1.0),C(SZ0+0.03),C(1.7),C(SZ0+0.11),0.4);d.tx(C(1.35),C(SZ0+0.27),'radiateur',{k:0.5});}
-  else d.tx(C(1.35),C(0.45),'sans rangement'+(stairOpen?' · verrière jusqu\'au mur':''),{k:0.55});
+  else if(closedMode)d.tx(C(1.35),C(0.45),'sans rangement',{k:0.55});
   d.rc(C(-0.2),0,C(0.9),C(SZ1),0.6);
   for(let i=1;i<10;i++)d.ln(C(SW0),C(SZ1-0.22*i),C(SW1),C(SZ1-0.22*i),0.3);d.rc(C(SW0),0,C(SW1),C(SZ1),0.4);
   d.ln(C(0.45),C(SZ1-0.14),C(0.45),C(0.26),0.5);d.pl([[C(0.45),C(0.17)],[C(0.41),C(0.27)],[C(0.49),C(0.27)]],0.4,{fill:'#111'});
@@ -1316,7 +1334,8 @@ function topView(runs){const d=new Drw(13),C=v=>v*100;
   d.dimH([XR,2.9,2.1,1.8,1.78].map(C),C(4.73)+35,C(4.73));d.dimH([XR,1.78,0].map(C),C(4.73)+72,C(4.73));
   d.dimV([0,SZ0,SZ1,ZB].map(C),C(-0.2)-38,C(-0.2));d.dimH([0.9,XR].map(C),C(SZ1)+14,null);
   // passages
-  if(kTable.visible){d.dimH([0.9,1.4].map(C),C(1.68),null);d.dimH([2.2,2.88].map(C),C(1.68),null);d.dimV([2.0,2.5].map(C),C(2.6),null);}else d.dimH([0.9,2.88].map(C),C(1.68),null);
+  if(kTable.visible){d.dimH([0.9,1.4].map(C),C(1.68),null);d.dimH([2.2,2.88].map(C),C(1.68),null);d.dimV([2.0,2.5].map(C),C(2.6),null);}
+  else if(cornerK.visible){d.dimH([1.52,2.85].map(C),C(1.2),null);d.dimV([1.64,2.5].map(C),C(1.65),null);}else d.dimH([0.9,2.88].map(C),C(1.68),null);
   if(island.visible){const x0=1.805,x1=3.805,z0=3.97,z1=4.87;
     d.dimH([x0,x1,4.505].map(C),C(z0)-25,[C(z0),C(z0),null]);d.dimV([z0,z1].map(C),C(x1)+25,C(x1));d.dimV([z1,5.57].map(C),C(3.3),null);
     if(closedMode)d.dimH([0.62,x0].map(C),C(4.42),null);}
